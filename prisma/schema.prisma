@@ -30,7 +30,8 @@ model Order {
   productId  String
   buyerEmail String
   status          String   @default("COMPLETED")
-  stripeSessionId String?  @unique
+  razorpayOrderId String?  @unique
+  razorpayPaymentId String? @unique
   createdAt       DateTime @default(now())
   
   product    Product  @relation(fields: [productId], references: [id])

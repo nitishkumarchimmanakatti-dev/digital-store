@@ -1,56 +1,39 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe';
+import { razorpay } from '@/lib/razorpay';
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const { productId } = await req.json();
-    if (!productId) {
-      return NextResponse.json({ error: 'Missing data' }, { status: 400 });
-    }
+    const { productId } = await request.json();
 
-    const product = await prisma.product.findUnique({ where: { id: productId } });
-    if (!product) {
-       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
-    }
-
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-
-    // Make sure the image is a valid absolute URL for Stripe
-    let images: string[] = [];
-    if (product.coverUrl) {
-      if (product.coverUrl.startsWith('http')) {
-        images = [product.coverUrl];
-      }
-    }
-
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: product.title,
-              description: product.description,
-              images,
-            },
-            unit_amount: Math.round(product.price * 100), // Stripe expects cents
-          },
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/product/${product.id}`,
-      metadata: {
-        productId: product.id,
-      },
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
     });
 
-    return NextResponse.json({ url: session.url });
+    if (!product) {
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+    }
+
+    // Amount should be in the smallest currency unit (paise for INR)
+    const amountInPaise = Math.round(product.price * 100);
+
+    const options = {
+      amount: amountInPaise,
+      currency: "INR",
+      receipt: `receipt_${productId}`,
+      notes: {
+        productId: product.id,
+      }
+    };
+
+    const order = await razorpay.orders.create(options);
+
+    return NextResponse.json({ orderId: order.id, amount: order.amount, currency: order.currency, keyId: process.env.RAZORPAY_KEY_ID });
   } catch (error) {
-    console.error('Checkout error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error('Error creating Razorpay order:', error);
+    return NextResponse.json(
+      { error: 'Error creating Razorpay order' },
+      { status: 500 }
+    );
   }
 }
