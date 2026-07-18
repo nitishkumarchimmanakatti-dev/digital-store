@@ -33,7 +33,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </p>
           
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--primary)' }}>${product.price.toFixed(2)}</span>
+            <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--primary)' }}>₹{product.price.toFixed(2)}</span>
             <CheckoutButton productId={product.id} price={product.price} />
           </div>
         </div>

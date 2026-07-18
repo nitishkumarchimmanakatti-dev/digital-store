@@ -54,7 +54,7 @@ export default function NewProductPage() {
           <textarea name="description" required className="input" rows={4} placeholder="Describe your product..."></textarea>
         </div>
         <div>
-          <label className="label">Price ($)</label>
+          <label className="label">Price (₹)</label>
           <input name="price" required type="number" step="0.01" min="0" className="input" placeholder="0.00" />
         </div>
         
