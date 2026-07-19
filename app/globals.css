@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  --background: #0f1115; /* Cool deep charcoal */
-  --foreground: #f8fafc; /* Crisp cool white */
-  --surface: #1e2128;    /* Slightly lighter charcoal */
-  --surface-hover: #292d36;
-  --primary: #f8fafc;
-  --primary-hover: #cbd5e1;
-  --border: #334155;
+  --background: #000000; /* Pure Black */
+  --foreground: #FFFFFF; /* Pure White */
+  --surface: #111111;    /* Very dark gray */
+  --surface-hover: #1a1a1a;
+  --primary: #FFFFFF;
+  --primary-hover: #cccccc;
+  --border: #333333;
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
