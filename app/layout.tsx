@@ -5,8 +5,21 @@ import { ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'DigitalStore - Premium Digital Products',
-  description: 'Download premium digital products, e-books, templates, and more.',
+  title: 'DigitalStore | Premium Tools, Guides & Prompts for Developers',
+  description: 'Download premium digital products for software engineers. Discover our 100+ ChatGPT Prompts for Developers, Frontend Interview Cheat Sheets, and ultimate setup guides to accelerate your career.',
+  keywords: ['developer tools', 'chatgpt prompts for coders', 'frontend interview cheat sheet', 'software engineering guides', 'coding resources', 'buy digital products'],
+  openGraph: {
+    title: 'DigitalStore | Premium Tools for Developers',
+    description: 'Level up your coding career with our premium guides, templates, and cheat sheets.',
+    url: 'https://digital-store-woad.vercel.app',
+    siteName: 'DigitalStore',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Premium Tools for Developers | DigitalStore',
+    description: 'Level up your coding career with our premium guides, templates, and cheat sheets.',
+  },
 };
 
 export default function RootLayout({
