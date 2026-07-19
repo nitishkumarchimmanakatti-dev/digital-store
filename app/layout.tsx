@@ -30,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <div className="mesh-bg"></div>
         <div className="container">
           <header className="navbar">
             <Link href="/" className="nav-brand">
