@@ -24,7 +24,7 @@ export default function ProductCard({ id, title, price, description, coverUrl }:
           {description}
         </p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '1rem' }}>
-          <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--primary)' }}>${price.toFixed(2)}</span>
+          <span style={{ fontWeight: 700, fontSize: '1.25rem', color: 'var(--primary)' }}>₹{price.toFixed(2)}</span>
           <span className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>Details</span>
         </div>
       </div>
