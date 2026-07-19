@@ -51,9 +51,8 @@ body {
   background-size: 110%;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.45; /* Much more visible and striking */
-  mix-blend-mode: multiply; /* Makes the gold/bronze lines pop against the cream background */
-  animation: slowPan 40s ease-in-out infinite alternate;
+  opacity: 0.35; /* Perfect balance between visibility and readability */
+  animation: slowPan 60s ease-in-out infinite alternate;
 }
 
 @keyframes slowPan {
