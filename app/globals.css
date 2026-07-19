@@ -48,10 +48,17 @@ body {
   height: 100vh;
   z-index: -2;
   background-image: url('/watermark.jpg');
-  background-size: cover;
+  background-size: 110%;
   background-position: center;
-  opacity: 0.15; /* Subtle watermark effect */
-  animation: none; /* Removed the gradient flow */
+  background-repeat: no-repeat;
+  opacity: 0.45; /* Much more visible and striking */
+  mix-blend-mode: multiply; /* Makes the gold/bronze lines pop against the cream background */
+  animation: slowPan 40s ease-in-out infinite alternate;
+}
+
+@keyframes slowPan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
 .animated-glow {
