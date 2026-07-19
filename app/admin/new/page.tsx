@@ -61,7 +61,10 @@ export default function NewProductPage() {
         <div>
           <label className="label">Digital File (Required)</label>
           {fileUrl ? (
-            <p className="text-muted" style={{ padding: '1rem', border: '1px solid var(--border)', borderRadius: '8px' }}>✅ File uploaded successfully!</p>
+            <div style={{ padding: '1rem', border: '1px solid var(--border)', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span className="text-muted">✅ File uploaded successfully!</span>
+              <button type="button" onClick={() => setFileUrl(null)} className="btn btn-secondary" style={{ padding: '0.25rem 0.75rem', fontSize: '0.75rem', minHeight: 'auto' }}>Remove</button>
+            </div>
           ) : (
             <div style={{ padding: '1rem', border: '1px dashed var(--border)', borderRadius: '8px' }}>
               <UploadButton
@@ -80,8 +83,18 @@ export default function NewProductPage() {
         <div>
           <label className="label">Cover Image (Optional)</label>
           {coverUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={coverUrl} alt="Cover" style={{ width: '100%', borderRadius: '8px', marginTop: '0.5rem' }} />
+            <div style={{ position: 'relative', marginTop: '0.5rem' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={coverUrl} alt="Cover" style={{ width: '100%', borderRadius: '8px' }} />
+              <button 
+                type="button" 
+                onClick={() => setCoverUrl(null)} 
+                className="btn btn-secondary" 
+                style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', padding: '0.25rem 0.75rem', fontSize: '0.75rem', backgroundColor: 'rgba(0,0,0,0.6)', color: 'white', border: 'none', minHeight: 'auto' }}
+              >
+                Remove
+              </button>
+            </div>
           ) : (
             <div style={{ padding: '1rem', border: '1px dashed var(--border)', borderRadius: '8px' }}>
               <UploadButton
