@@ -39,7 +39,7 @@ body {
   flex-direction: column;
 }
 
-/* Ethereal Animated Background */
+/* Ethereal Watermark Background */
 .animated-bg {
   position: fixed;
   top: 0;
@@ -47,9 +47,11 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  background: linear-gradient(120deg, #fdfbf7 0%, #f4eee6 50%, #fcf9f5 100%);
-  background-size: 200% 200%;
-  animation: gradientFlow 15s ease infinite;
+  background-image: url('/watermark.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15; /* Subtle watermark effect */
+  animation: none; /* Removed the gradient flow */
 }
 
 .animated-glow {
