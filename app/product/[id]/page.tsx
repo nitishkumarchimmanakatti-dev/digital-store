@@ -23,9 +23,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
         &larr; Back to all products
       </Link>
       
-      <div className="grid lg:grid-cols-2" style={{ gap: '4rem', alignItems: 'start' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: '4rem', alignItems: 'start' }}>
         {/* Left Column - Image */}
-        <div style={{ position: 'sticky', top: '2rem' }}>
+        <div className="sticky-desktop">
           {product.coverUrl ? (
             <div className="glass-panel" style={{ padding: '0.5rem' }}>
               <img src={product.coverUrl} alt={product.title} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'calc(var(--radius-lg) - 0.5rem)' }} />
