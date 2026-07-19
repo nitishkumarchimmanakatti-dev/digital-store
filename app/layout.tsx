@@ -30,6 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <div className="animated-bg"></div>
+        <div className="animated-glow"></div>
         <div className="container">
           <header className="navbar">
             <Link href="/" className="nav-brand">
